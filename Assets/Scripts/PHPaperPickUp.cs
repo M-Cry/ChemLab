@@ -5,6 +5,9 @@ using UnityEngine;
 public class PHPaperPickUp : MonoBehaviour, IInteractable
 {
     [SerializeField] string interactText;
+    [SerializeField] Canvas pHPaperUI;
+
+    public bool ownPHPaper = false;
 
     public string GetInteractText()
     {
@@ -18,18 +21,8 @@ public class PHPaperPickUp : MonoBehaviour, IInteractable
 
     public void Interact(Transform interactorTransform)
     {
-        throw new System.NotImplementedException();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        pHPaperUI.gameObject.SetActive(true);
+        gameObject.SetActive(false);
+        ownPHPaper = true;
     }
 }
