@@ -20,5 +20,6 @@ public class DoorInteract : MonoBehaviour, IInteractable
     public void Interact(Transform interactorTransform)
     {
         SceneManager.LoadScene("MainMenu");
+        Cursor.lockState = CursorLockMode.None;
     }
 }
