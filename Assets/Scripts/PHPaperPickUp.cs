@@ -1,13 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PHPaperPickUp : MonoBehaviour, IInteractable
 {
-    [SerializeField] string interactText;
-    [SerializeField] Canvas pHPaperUI;
+    [SerializeField] BaseAcid LevelManager;
+    [SerializeField] StepsManager stepsManager;
+    [SerializeField] int actionIndex = 0;
 
-    public bool ownPHPaper = false;
+    [SerializeField] string interactText;
+
+    [SerializeField] Canvas pHPaperUI;
+    [SerializeField] float spawnTime = 5f;
+    float countDownTimer;
 
     public string GetInteractText()
     {
@@ -21,8 +24,29 @@ public class PHPaperPickUp : MonoBehaviour, IInteractable
 
     public void Interact(Transform interactorTransform)
     {
-        pHPaperUI.gameObject.SetActive(true);
-        gameObject.SetActive(false);
-        ownPHPaper = true;
+        if (stepsManager.GetCurrentStepIndex() >= actionIndex)
+        {
+            pHPaperUI.gameObject.SetActive(true);
+            gameObject.SetActive(false);
+            LevelManager.pHPaperCount++;
+        }
+    }
+
+    private void Start()
+    {
+        countDownTimer = spawnTime;
+    }
+
+    private void Update()
+    {
+        if (!gameObject.activeSelf && countDownTimer <= 0f)
+        {
+            countDownTimer = spawnTime;
+            gameObject.SetActive(true);
+        }
+        else
+        {
+            countDownTimer -= Time.deltaTime;
+        }
     }
 }

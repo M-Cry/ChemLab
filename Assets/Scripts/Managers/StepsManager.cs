@@ -6,10 +6,9 @@ public class StepsManager : MonoBehaviour
 {
 
     public GameObject[] Steps;
-    private int currentStepIndex;
+    private int currentStepIndex = 0;
 
-    [SerializeField]
-    private float waitTime = 2f;
+    [SerializeField] private float waitTime = 2f;
 
     // Update is called once per frame
     void Update()
@@ -41,5 +40,10 @@ public class StepsManager : MonoBehaviour
                 waitTime -= Time.deltaTime;
             }
         }
+    }
+
+    public int GetCurrentStepIndex()
+    {
+        return currentStepIndex;
     }
 }
