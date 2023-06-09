@@ -9,8 +9,10 @@ public class PHPaperPickUp : MonoBehaviour, IInteractable
     [SerializeField] string interactText;
 
     [SerializeField] Canvas pHPaperUI;
-    [SerializeField] float spawnTime = 5f;
-    float countDownTimer;
+    
+    public bool respawn = false;
+
+    public float countDownTimer;
 
     public string GetInteractText()
     {
@@ -29,24 +31,19 @@ public class PHPaperPickUp : MonoBehaviour, IInteractable
             pHPaperUI.gameObject.SetActive(true);
             gameObject.SetActive(false);
             LevelManager.pHPaperCount++;
+            respawn = true;
         }
     }
 
     private void Start()
     {
-        countDownTimer = spawnTime;
+
     }
 
     private void Update()
     {
-        if (!gameObject.activeSelf && countDownTimer <= 0f)
-        {
-            countDownTimer = spawnTime;
-            gameObject.SetActive(true);
-        }
-        else
-        {
-            countDownTimer -= Time.deltaTime;
-        }
+        
     }
+
+
 }

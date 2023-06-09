@@ -16,7 +16,7 @@ public class PerformPHTest : MonoBehaviour, IInteractable
     [SerializeField] Material PaperColor;
     [SerializeField] Material LiquidColor;
 
-    [SerializeField] int actionIndex = 0;
+    [SerializeField] int actionIndex;
     bool wait = false;
 
     Vector3 bottomPosition = new Vector3(-0.2800005f, 1.406f, -0.206f);
@@ -81,6 +81,7 @@ public class PerformPHTest : MonoBehaviour, IInteractable
                 elapsedTime = 0f;
             }
             wait = true;
+            pHPaperColor.SetActive(false);
         }
         else if (animateGoingUp)
         {
