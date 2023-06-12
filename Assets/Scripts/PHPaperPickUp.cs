@@ -8,15 +8,16 @@ public class PHPaperPickUp : MonoBehaviour, IInteractable
 
     [SerializeField] string interactText;
 
-    [SerializeField] Canvas pHPaperUI;
-    
     public bool respawn = false;
 
     public float countDownTimer;
 
     public string GetInteractText()
     {
-        return interactText;
+        if (stepsManager.GetCurrentStepIndex() >= actionIndex)
+            return interactText;
+        else
+            return "Not Time yet";
     }
 
     public Transform GetTransform()
@@ -28,22 +29,9 @@ public class PHPaperPickUp : MonoBehaviour, IInteractable
     {
         if (stepsManager.GetCurrentStepIndex() >= actionIndex)
         {
-            pHPaperUI.gameObject.SetActive(true);
             gameObject.SetActive(false);
             LevelManager.pHPaperCount++;
             respawn = true;
         }
     }
-
-    private void Start()
-    {
-
-    }
-
-    private void Update()
-    {
-        
-    }
-
-
 }

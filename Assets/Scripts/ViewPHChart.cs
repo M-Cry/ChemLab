@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class ViewPHChart : MonoBehaviour, IInteractable
 {
+    [SerializeField] StepsManager stepsManager;
+
     [SerializeField] string interactText;
     [SerializeField] Canvas pHChart;
     [SerializeField] KeyCode keyToQuitPHChart;
+    [SerializeField] int actionIndex;
 
     public string GetInteractText()
     {
-        return interactText;
+        if (stepsManager.GetCurrentStepIndex() >= actionIndex)
+            return interactText;
+        else
+            return "Not Time yet";
     }
 
     public Transform GetTransform()
@@ -20,8 +26,8 @@ public class ViewPHChart : MonoBehaviour, IInteractable
 
     public void Interact(Transform interactorTransform)
     {
-        pHChart.gameObject.SetActive(true);
-        
+        if (stepsManager.GetCurrentStepIndex() >= actionIndex)
+            pHChart.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
