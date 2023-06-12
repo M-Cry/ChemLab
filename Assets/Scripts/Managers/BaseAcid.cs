@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using UnityEngine;
 
 public class BaseAcid : MonoBehaviour
@@ -8,8 +9,12 @@ public class BaseAcid : MonoBehaviour
     [SerializeField] PHPaperPickUp[] pHPapers;
     [SerializeField] float spawnTime = 5f;
 
-    public int pHPaperCount = 0;
-    public bool ownPHPaper;
+    public static int pHPaperCount = 0;
+    public static bool ownPHPaper;
+
+    public static bool HandWashed = false;
+    public static bool ChartChecked = false;
+    public static bool ExperamentDone = false;
 
     private void Awake()
     {

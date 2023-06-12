@@ -9,6 +9,12 @@ public class StepsManager : MonoBehaviour
     private int currentStepIndex = 0;
 
     [SerializeField] private float waitTime = 2f;
+    private float waitTimeValue;
+
+    void Start()
+    {
+        waitTimeValue = waitTime;
+    }
 
     // Update is called once per frame
     void Update()
@@ -27,13 +33,58 @@ public class StepsManager : MonoBehaviour
 
         if (currentStepIndex == 0)
         {
-
+            if (waitTime <= 0)
+            {
+                if (BaseAcid.HandWashed)
+                {
+                    currentStepIndex++;
+                    waitTime = waitTimeValue;
+                }
+            }
+            else
+            {
+                waitTime -= Time.deltaTime;
+            }
         }
         else if (currentStepIndex == 1)
         {
             if (waitTime <= 0)
             {
-
+                if (BaseAcid.ChartChecked)
+                {
+                    currentStepIndex++;
+                    waitTime = waitTimeValue;
+                }
+            }
+            else
+            {
+                waitTime -= Time.deltaTime;
+            }
+        }
+        else if (currentStepIndex == 2)
+        {
+            if (waitTime <= 0)
+            {
+                if (BaseAcid.ownPHPaper)
+                {
+                    currentStepIndex++;
+                    waitTime = waitTimeValue;
+                }
+            }
+            else
+            {
+                waitTime -= Time.deltaTime;
+            }
+        }
+        else if (currentStepIndex == 3)
+        {
+            if (waitTime <= 0)
+            {
+                if (BaseAcid.ExperamentDone)
+                {
+                    currentStepIndex++;
+                    waitTime = waitTimeValue;
+                }
             }
             else
             {

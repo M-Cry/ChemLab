@@ -5,7 +5,6 @@ using UnityEngine;
 public class PerformPHTest : MonoBehaviour, IInteractable
 {
     // controllers
-    [SerializeField] BaseAcid LevelManager;
     [SerializeField] StepsManager stepsManager;
 
     [SerializeField] string interactText;
@@ -29,9 +28,9 @@ public class PerformPHTest : MonoBehaviour, IInteractable
 
     public string GetInteractText()
     {
-        if (LevelManager.ownPHPaper && stepsManager.GetCurrentStepIndex() >= actionIndex)
+        if (BaseAcid.ownPHPaper && stepsManager.GetCurrentStepIndex() >= actionIndex)
             return interactText;
-        else if (!LevelManager.ownPHPaper && stepsManager.GetCurrentStepIndex() >= actionIndex)
+        else if (!BaseAcid.ownPHPaper && stepsManager.GetCurrentStepIndex() >= actionIndex)
             return interactTextWithNoPaper;
         else 
             return "Not Time yet";
@@ -45,10 +44,11 @@ public class PerformPHTest : MonoBehaviour, IInteractable
     public void Interact(Transform interactorTransform)
     {
         // if we own pH paper perform experament
-        if (LevelManager.ownPHPaper && stepsManager.GetCurrentStepIndex() >= actionIndex && !wait)
+        if (BaseAcid.ownPHPaper && stepsManager.GetCurrentStepIndex() >= actionIndex && !wait)
         {
             animateGoingDown = true;
-            LevelManager.pHPaperCount--;
+            BaseAcid.pHPaperCount--;
+            BaseAcid.ExperamentDone = true;
         }
     }
 

@@ -24,6 +24,7 @@ public class WashHand : MonoBehaviour, IInteractable
     {
         runningWater.Play();
         openSound.Play();
+        BaseAcid.HandWashed = true;
     }
 
 

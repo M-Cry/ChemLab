@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class PHPaperPickUp : MonoBehaviour, IInteractable
 {
-    [SerializeField] BaseAcid LevelManager;
     [SerializeField] StepsManager stepsManager;
     [SerializeField] int actionIndex = 0;
 
@@ -30,7 +29,7 @@ public class PHPaperPickUp : MonoBehaviour, IInteractable
         if (stepsManager.GetCurrentStepIndex() >= actionIndex)
         {
             gameObject.SetActive(false);
-            LevelManager.pHPaperCount++;
+            BaseAcid.pHPaperCount++;
             respawn = true;
         }
     }

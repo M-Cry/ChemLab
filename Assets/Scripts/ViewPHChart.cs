@@ -27,7 +27,10 @@ public class ViewPHChart : MonoBehaviour, IInteractable
     public void Interact(Transform interactorTransform)
     {
         if (stepsManager.GetCurrentStepIndex() >= actionIndex)
+        {
             pHChart.gameObject.SetActive(true);
+            BaseAcid.ChartChecked = true;
+        }
     }
 
     // Update is called once per frame
