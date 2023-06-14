@@ -12,6 +12,7 @@ public class PerformPHTest : MonoBehaviour, IInteractable
 
     [SerializeField] GameObject pHPaper;
     [SerializeField] GameObject pHPaperColor;
+    [SerializeField] GameObject LiquidObject;
     [SerializeField] Material PaperColor;
     [SerializeField] Material LiquidColor;
 
@@ -59,6 +60,8 @@ public class PerformPHTest : MonoBehaviour, IInteractable
         pHPaperColor.GetComponent<Renderer>().material = PaperColor;
         pHPaperColor.SetActive(false);
         pHPaper.SetActive(false);
+
+        LiquidObject.GetComponent<Renderer>().material = LiquidColor;
     }
 
     // Update is called once per frame

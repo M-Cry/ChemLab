@@ -21,5 +21,6 @@ public class DoorInteract : MonoBehaviour, IInteractable
     {
         SceneManager.LoadScene("MainMenu");
         Cursor.lockState = CursorLockMode.None;
+        PauseMenu.GameIsPaused = true;
     }
 }
