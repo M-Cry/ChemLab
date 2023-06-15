@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Base_Acid.unity
     guid: 8b6ae6bd15425e943950e29376c9922a
+  - enabled: 1
+    path: Assets/Scenes/Reactions.unity
+    guid: 92fa59b59137b99489a2644d7152ef7a
   m_configObjects: {}
